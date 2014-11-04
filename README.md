@@ -28,7 +28,8 @@ This will build and start Re:VIEW container named `review`, and mount the curren
 $ cd review-projects
 $ git clone https://github.com/takahashim/review-sample-book
 $ export DOCKER_HOST=tcp://localhost:2375
-$ docker exec review sh -c 'cd /review-projects/review-sample-book/src && review-pdfmaker config.yml'
+$ docker exec review \
+  sh -c 'cd /review-projects/review-sample-book/src && review-pdfmaker config.yml'
 ```
 
 ```
