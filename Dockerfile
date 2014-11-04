@@ -33,7 +33,4 @@ ENV PATH /review/bin:$PATH
 
 ENV HOME /root
 
-# daemonize
-RUN apt-get -y install nmap
-
-CMD ["ncat", "-l", "80", "-c", "echo Hello, World!"]
+CMD ["bash"]
