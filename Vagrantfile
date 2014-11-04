@@ -11,6 +11,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.synced_folder ".", "/vagrant"
 
+  config.vm.provision :shell do |sh|
+    sh.inline = <<-EOT
+      docker rm -f review
+    EOT
+  end
+
   config.vm.provision :docker do |d|
     d.build_image "/vagrant/", args: "-t yungsang/review"
     d.run "review", image: "yungsang/review",
