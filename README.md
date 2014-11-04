@@ -43,7 +43,6 @@ $ vagrant ssh
 docker@boot2docker:~$ cd /vagrant
 ```
 
-
 ## Cleanup to rebuild a sample book
 
 ```
@@ -63,4 +62,3 @@ review-sample-book
 root@2f819af116ee:~# cd review-sample-book/src
 root@2f819af116ee:~/review-sample-book/src# review-pdfmaker config.yml
 ```
-
