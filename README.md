@@ -17,7 +17,8 @@ $ git clone https://github.com/YungSang/vagrant-docker-review.git
 $ cd vagrant-docker-review
 $ vagrant up
 ```
-This will build and start Re:VIEW container named `review`, which mounts `review-projects` directory under `vagrant-docker-review` through boot2docker VM (`/vagrant`).
+
+This will build and start Re:VIEW container named `review`, and mount the current `vagrant-docker-review` folder at `/vagrant` in boot2docker VM.
 
 ## Build a sample book as PDF
 
@@ -27,7 +28,7 @@ This will build and start Re:VIEW container named `review`, which mounts `review
 $ cd review-projects
 $ git clone https://github.com/takahashim/review-sample-book
 $ export DOCKER_HOST=tcp://localhost:2375
-$ docker exec review sh -c 'cd review-sample-book/src && review-pdfmaker config.yml'
+$ docker exec review sh -c 'cd /review-projects/review-sample-book/src && review-pdfmaker config.yml'
 ```
 
 ```
@@ -55,10 +56,6 @@ Also you can login the Re:VIEW container.
 
 ```
 $ docker exec -it review bash
-root@2f819af116ee:~# pwd
-/review-projects
-root@2f819af116ee:~# ls
-review-sample-book
-root@2f819af116ee:~# cd review-sample-book/src
-root@2f819af116ee:~/review-sample-book/src# review-pdfmaker config.yml
+root@2f819af116ee:/# cd /review-projects/review-sample-book/src
+root@2f819af116ee:/review-projects/review-sample-book/src# review-pdfmaker config.yml
 ```

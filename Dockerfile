@@ -31,11 +31,7 @@ RUN git clone git://github.com/kmuto/review.git
 
 ENV PATH /review/bin:$PATH
 
-ENV HOME /review-projects
-
-WORKDIR /review-projects
-
-VOLUME ["/review-projects"]
+ENV HOME /root
 
 # daemonize
 RUN apt-get -y install nmap
