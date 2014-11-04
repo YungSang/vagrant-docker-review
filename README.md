@@ -47,7 +47,7 @@ docker@boot2docker:~$ cd /vagrant
 ## Cleanup to rebuild a sample book
 
 ```
-$ docker exec -t review bash -c 'cd review-sample-book/src && rm -rf book-pdf book.pdf'
+$ sh -c 'cd review-sample-book/src && rm -rf book-pdf book.pdf'
 ```
 
 ## Build a sample book interactively
