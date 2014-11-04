@@ -1,1 +1,3 @@
 .vagrant/
+/review-projects/*
+!/review-projects/README.md
