@@ -16,4 +16,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     d.run "review", image: "yungsang/review",
       args: "-v /vagrant/review-projects:/review-projects"
   end
+
+  config.vm.provision :shell, run: "always" do |sh|
+    sh.inline = <<-EOT
+      IS_RUNNING=$(docker inspect --format '{{.State.Running}}' review 2> /dev/null)
+      if [ "$IS_RUNNING" != "true" ] ; then
+        docker start review
+      fi
+    EOT
+  end
 end
