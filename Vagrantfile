@@ -13,7 +13,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provision :shell do |sh|
     sh.inline = <<-EOT
-      docker rm -f review
+      docker rm -f review || true
     EOT
   end
 
