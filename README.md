@@ -4,13 +4,13 @@
 
 This is a Dockerized version of [Re:VIEW Execution Environment with Vagrant](https://github.com/kenjis/vagrant-review-precise64).
 
-# Requirements
+## Requirements
 
 - [VirtualBox](https://www.virtualbox.org/) >= v4.3.18
 - [Vagrant](https://www.vagrantup.com/) >= v1.6.5
 - [Docker](https://www.docker.com/) >= v1.3.1 (Docker client for Mac)
 
-# Build Re:VIEW container
+## Build Re:VIEW container
 
 ```
 $ git clone https://github.com/YungSang/vagrant-docker-review.git
