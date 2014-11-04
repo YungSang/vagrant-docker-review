@@ -26,6 +26,7 @@ This will build and start Re:VIEW container named `review`, which mounts `review
 ```
 $ cd review-projects
 $ git clone https://github.com/takahashim/review-sample-book
+$ export DOCKER_HOST=tcp://localhost:2375
 $ docker exec -t review bash -c 'cd review-sample-book/src && review-pdfmaker config.yml'
 ```
 
