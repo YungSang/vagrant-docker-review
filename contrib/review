@@ -1,0 +1,43 @@
+#!/bin/sh
+
+print_usage() {
+  echo "Usage: $(basename $0) <command> [<arguments...>]"
+  echo
+  echo "command:"
+  echo "  catalog-converter | review-catalog-converter"
+  echo "  check             | review-check"
+  echo "  checkdep          | review-checkdep"
+  echo "  compile           | review-compile"
+  echo "  epubmaker         | review-epubmaker"
+  echo "  epubmaker-legacy  | review-epubmaker-legacy"
+  echo "  index             | review-index"
+  echo "  init              | review-init"
+  echo "  pdfmaker          | review-pdfmaker"
+  echo "  preproc           | review-preproc"
+  echo "  validate          | review-validate"
+  echo "  vol               | review-vol"
+  echo
+  echo "  bash (or other linux commands)"
+}
+
+CMD="$1"
+if [ -z "$CMD" ] ; then
+  print_usage >&2
+  exit 1
+fi
+shift
+
+case "$CMD" in
+  "catalog-converter" | "check" | "checkdep" | "compile" | "epubmaker" | "epubmaker-legacy" | "index" | "init" | "pdfmaker" | "preproc" | "validate" | "vol" ) CMD="review-${CMD}";;
+esac
+
+DIR=`pwd | sed -e "s/^.*\(\/review-projects\/.*\)\$/\1/"`
+if [[ "$DIR" == /review-projects/* ]]; then
+  docker run -it --rm -v /vagrant/review-projects:/review-projects yungsang/review \
+    sh -c "cd $DIR && $CMD $*"
+else
+  echo "$(basename $0) must be executed under the review-projects folder." >&2
+  echo >&2
+  print_usage >&2
+  exit 3
+fi

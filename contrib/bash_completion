@@ -1,0 +1,16 @@
+#!/bin/bash
+
+_review() {
+  local cmds cur prev
+  cmds="catalog-converter check checkdep compile epubmaker epubmaker-legacy index init pdfmaker preproc validate vol bash"
+  cur=${COMP_WORDS[COMP_CWORD]}
+  prev=${COMP_WORDS[COMP_CWORD-1]}
+
+  COMPREPLY=()
+  if (( $COMP_CWORD <= 1 )); then
+    COMPREPLY=( $(compgen -W '${cmds}' ${cur}) )
+  else
+    COMPREPLY=( $(compgen -f ${cur}) );
+  fi
+}
+complete -F _review -o default -o bashdefault review
